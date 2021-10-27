@@ -85,3 +85,11 @@ func (u User) IsInvestmentItemLimit() bool {
 		return c <= 5
 	}
 }
+
+func (u User) Notify(note IUserNotification) error {
+	note.SetId(u.Id)
+	note.SetName(u.name)
+	note.SetStatus(u.status)
+	note.SetItemList(u.investmentItemList)
+	return nil
+}
